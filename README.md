@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jeeban Mohanty | AI Engineer Portfolio
 
-## Getting Started
+A production-grade, interactive portfolio showcasing my work in **Retrieval-Augmented Generation (RAG)**, **Agentic AI**, and **LLM Engineering**. 
 
-First, run the development server:
+Unlike standard static portfolios, this site features a built-in AI assistant that actually *demonstrates* RAG architecture. It answers questions about my experience, skills, and projects by semantically searching a private vector database and grounding its answers to prevent hallucination.
 
-```bash
+🔗 **Live Demo:** [Deploying soon to Vercel]
+
+---
+
+## 🚀 Key Features
+
+*   **RAG-Powered AI Assistant**: Built with Gemini API (`gemini-3.5-flash-lite`) and Qdrant.
+*   **Semantic Vector Search**: Uses `gemini-embedding-001` (3072 dimensions) to retrieve contextually relevant information from a custom knowledge base.
+*   **Zero-Hallucination Gate**: Implements a strict cosine similarity relevance threshold (0.55). If a question is irrelevant or data is missing, the AI safely refuses rather than hallucinating.
+*   **Source Attribution**: The UI actively renders citations (e.g., `📄 education/class_10`) to prove where the LLM sourced its information.
+*   **Dual-Path Retrieval**: Fast FAQ caching for common questions, falling back to dense vector retrieval for complex/specific queries.
+
+## 🧠 The RAG Architecture
+
+The knowledge base lives in the `jeeban_ai/` directory as Markdown files.
+
+\`\`\`text
+jeeban_ai/ (Markdown Knowledge Base)
+    │
+    ▼
+Ingestion Script (npm run ingest) → Recursive Chunking → Gemini Embeddings
+    │
+    ▼
+Qdrant Cloud (Vector Database)
+    │
+    ▼
+User Question → Query Embedding → Vector Search → Relevance Gate
+    │
+    ▼
+Gemini 3.5 Flash Lite + Grounded Prompt
+    │
+    ▼
+Accurate Answer + Source Citations
+\`\`\`
+
+## 🛠️ Tech Stack
+
+*   **Frontend**: Next.js 14 (App Router), React, Tailwind CSS, TypeScript
+*   **LLM & Embeddings**: Google Gemini API (`gemini-3.5-flash-lite`, `gemini-embedding-001`)
+*   **Vector Database**: Qdrant Cloud (REST API)
+*   **Deployment**: Vercel
+
+---
+
+## 💻 Local Development
+
+### 1. Clone the repository
+\`\`\`bash
+git clone https://github.com/JeebanM/portfolio.git
+cd portfolio
+\`\`\`
+
+### 2. Install dependencies
+\`\`\`bash
+npm install
+\`\`\`
+
+### 3. Configure Environment Variables
+Create a `.env.local` file in the root directory and add your keys:
+\`\`\`env
+GEMINI_API_KEY=your_gemini_api_key_here
+QDRANT_URL=your_qdrant_cluster_url
+QDRANT_API_KEY=your_qdrant_api_key
+QDRANT_COLLECTION=jeeban_ai
+\`\`\`
+
+### 4. Ingest the Knowledge Base
+Before chatting with the AI, you must vectorize the markdown files in `jeeban_ai/` and push them to Qdrant:
+\`\`\`bash
+npm run ingest
+\`\`\`
+*(This script reads the markdown files, chunks them, generates 3072-dim embeddings, and upserts them to Qdrant.)*
+
+### 5. Run the Dev Server
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the portfolio.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This Next.js app is optimized for [Vercel](https://vercel.com/). 
 
-## Learn More
+1. Push your code to GitHub.
+2. Import the repository in Vercel.
+3. Add the 4 environment variables (`GEMINI_API_KEY`, `QDRANT_URL`, `QDRANT_API_KEY`, `QDRANT_COLLECTION`) in the Vercel Dashboard Settings.
+4. Deploy!
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*(Note: You do not need to run the ingestion script on Vercel. Ingestion is run locally whenever you update your markdown files, pushing the new vectors to your Qdrant Cloud cluster.)*
