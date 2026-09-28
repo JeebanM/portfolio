@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import DemoTrailerSection from "@/components/DemoTrailerSection";
 import PipelineCanvas from "@/components/PipelineCanvas";
 import ProjectsSection from "@/components/ProjectsSection";
 import RagBenchSection from "@/components/RagBenchSection";
@@ -16,6 +17,7 @@ export default function Home() {
       <main className="w-full pt-16 md:pt-20 bg-background min-h-screen">
         <div className="flex flex-col w-full">
           <HeroSection />
+          <DemoTrailerSection />
           <PipelineCanvas />
           <ProjectsSection />
           <RagBenchSection />

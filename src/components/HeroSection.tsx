@@ -66,8 +66,15 @@ export default function HeroSection() {
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-space-sm pt-space-xs">
               <button
+                onClick={() => scrollTo("demo-trailer")}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-primary text-on-primary text-[13px] font-semibold hover:opacity-90 transition-all shadow-[0_0_20px_rgba(208,188,255,0.4)]"
+              >
+                <span className="material-symbols-outlined text-[18px]">play_circle</span>
+                Watch Demo
+              </button>
+              <button
                 onClick={() => scrollTo("projects")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-primary text-on-primary text-[13px] font-semibold hover:opacity-90 transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all text-[13px] font-semibold shadow-sm"
               >
                 <span className="material-symbols-outlined text-[18px]">bolt</span>
                 View Projects
