@@ -3,8 +3,8 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const EMBEDDING_MODEL = "gemini-embedding-001";
-const EMBEDDING_DIMENSION = 3072; // gemini-embedding-001 outputs 3072-dim vectors
+const EMBEDDING_MODEL = "text-embedding-004";
+const EMBEDDING_DIMENSION = 768; // text-embedding-004 outputs 768-dim vectors
 
 export { EMBEDDING_DIMENSION };
 
