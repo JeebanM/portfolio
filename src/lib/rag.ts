@@ -102,7 +102,7 @@ export async function ragAnswer(question: string): Promise<RAGResponse> {
   // Step 4: Generate with Gemini
   const genAI = new GoogleGenAI({ apiKey });
   const result = await genAI.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-3.8-flash",
     contents: groundedPrompt,
     config: {
       systemInstruction: RAG_SYSTEM_PROMPT,

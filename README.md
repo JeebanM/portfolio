@@ -13,8 +13,8 @@ Unlike standard static portfolios, this site features a built-in AI assistant th
 
 ## 🚀 Key Features
 
-*   **RAG-Powered AI Assistant**: Built with Gemini API (`gemini-2.5-flash`) and Qdrant.
-*   **Semantic Vector Search**: Uses `text-embedding-004` (768 dimensions) to retrieve contextually relevant information from a custom knowledge base.
+*   **RAG-Powered AI Assistant**: Built with Gemini API (`gemini-3.8-flash`) and Qdrant.
+*   **Semantic Vector Search**: Uses `gemini-embedding-001` (3072 dimensions) to retrieve contextually relevant information from a custom knowledge base.
 *   **Zero-Hallucination Gate**: Implements a strict cosine similarity relevance threshold (0.55). If a question is irrelevant or data is missing, the AI safely refuses rather than hallucinating. Tested against 50+ adversarial and out-of-domain questions to validate the relevance gate's robustness.
 *   **Source Attribution**: The UI actively renders citations (e.g., `📄 education/class_10`) to prove where the LLM sourced its information.
 *   **Dual-Path Retrieval**: Fast FAQ caching for common questions, falling back to dense vector retrieval for complex/specific queries.
@@ -45,7 +45,7 @@ Accurate Answer + Source Citations
 ## 🛠️ Tech Stack
 
 *   **Frontend**: Next.js 16.3 (App Router), React 19, Tailwind CSS v4, TypeScript
-*   **LLM & Embeddings**: Google Gemini API (`gemini-2.5-flash`, `text-embedding-004`)
+*   **LLM & Embeddings**: Google Gemini API (`gemini-3.8-flash`, `gemini-embedding-001`)
 *   **Vector Database**: Qdrant Cloud (REST API)
 *   **Deployment**: Vercel
 
