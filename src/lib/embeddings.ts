@@ -1,12 +1,13 @@
 // src/lib/embeddings.ts
-// Generate text embeddings using Google Gemini text-embedding-004
+// Generate text embeddings using Google Gemini gemini-embedding-001
 
 import { GoogleGenAI } from "@google/genai";
 
-const EMBEDDING_MODEL = "text-embedding-004";
-const EMBEDDING_DIMENSION = 768; // text-embedding-004 outputs 768-dim vectors
+const EMBEDDING_MODEL = "gemini-embedding-001";
+const EMBEDDING_DIMENSION = 3072; // gemini-embedding-001 outputs 3072-dim vectors
 
 export { EMBEDDING_DIMENSION };
+
 
 function getGenAI(): GoogleGenAI {
   const apiKey = process.env.GEMINI_API_KEY?.trim();
