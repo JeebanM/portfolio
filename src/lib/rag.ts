@@ -20,7 +20,7 @@ export interface RAGResponse {
  * - Unrelated queries (e.g. "Class 9 marks") score ~0.40–0.54
  * - Setting at 0.55 blocks low-relevance queries without over-blocking real ones
  */
-const MIN_RELEVANCE_SCORE = 0.55;
+const MIN_RELEVANCE_SCORE = 0.45;
 
 const RAG_SYSTEM_PROMPT = `You are Jeeban Mohanty's AI Portfolio Assistant.
 
@@ -102,7 +102,7 @@ export async function ragAnswer(question: string): Promise<RAGResponse> {
   // Step 4: Generate with Gemini
   const genAI = new GoogleGenAI({ apiKey });
   const result = await genAI.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: "gemini-3.5-flash-lite",
     contents: groundedPrompt,
     config: {
       systemInstruction: RAG_SYSTEM_PROMPT,
