@@ -1,3 +1,5 @@
+import ScrollTriggeredVideo from "./ScrollTriggeredVideo";
+
 export default function DemoTrailerSection() {
   return (
     <section id="demo-trailer" className="w-full max-w-[1440px] mx-auto px-gutter py-space-xl overflow-hidden">
@@ -13,16 +15,7 @@ export default function DemoTrailerSection() {
         </p>
 
         <div className="w-full relative mt-space-md rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(208,188,255,0.15)] border border-surface-container-high bg-surface-container-lowest">
-          <video 
-            src="/brag.mp4" 
-            poster="/brag.jpg"
-            controls 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="w-full h-auto aspect-video object-cover"
-          />
+          <ScrollTriggeredVideo src="/brag.mp4" poster="/brag.jpg" />
         </div>
       </div>
     </section>
