@@ -4,7 +4,7 @@ A production-grade, interactive portfolio showcasing my work in **Retrieval-Augm
 
 Unlike standard static portfolios, this site features a built-in AI assistant that actually *demonstrates* RAG architecture. It answers questions about my experience, skills, and projects by semantically searching a private vector database and grounding its answers to prevent hallucination.
 
-🔗 **Live Demo:** [https://jeeban-portfolio.vercel.app](https://jeeban-portfolio.vercel.app) *(Replace with your actual Vercel link)*
+🔗 **Live Demo:** [https://portfolio-nine-azure-71.vercel.app/](https://portfolio-nine-azure-71.vercel.app/)
 
 ![AI Assistant Demo](./public/assistant-demo.gif)
 *(Please add an `assistant-demo.gif` in the `public` folder showing the widget answering a question with a citation!)*
